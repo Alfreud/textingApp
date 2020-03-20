@@ -2,7 +2,7 @@ package com.alfred0ga.texting.mainModule.model;
 
 import com.alfred0ga.texting.common.pojo.User;
 
-public interface InteractorMain {
+public interface MainInteractor {
 
     void suscribeToUserList();
     void unsuscribeToUserList();
