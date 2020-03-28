@@ -1,12 +1,20 @@
 package com.alfred0ga.texting.mainModule.view;
 
+import android.app.ActivityOptions;
 import android.app.NotificationManager;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -14,23 +22,31 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alfred0ga.texting.R;
+import com.alfred0ga.texting.addModule.view.AddFragment;
+import com.alfred0ga.texting.chatModule.view.ChatActivity;
 import com.alfred0ga.texting.common.pojo.User;
 import com.alfred0ga.texting.common.utils.UtilsCommon;
+import com.alfred0ga.texting.loginModule.view.LoginActivity;
 import com.alfred0ga.texting.mainModule.MainPresenter;
 import com.alfred0ga.texting.mainModule.MainPresenterClass;
 import com.alfred0ga.texting.mainModule.view.adapters.OnItemClickListener;
 import com.alfred0ga.texting.mainModule.view.adapters.RequestAdapter;
 import com.alfred0ga.texting.mainModule.view.adapters.UserAdapter;
+import com.alfred0ga.texting.profileModule.view.ProfileActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener, MainView {
+
+    private static final int RC_PROFILE = 23;
 
     @BindView(R.id.imgProfile)
     CircleImageView imgProfile;
@@ -94,18 +110,66 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_logout:
-
+                mPresenter.signOff();
+                Intent intent = new Intent(this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        | Intent.FLAG_ACTIVITY_NEW_TASK
+                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
                 break;
             case R.id.action_profile:
-
+                Intent intentProfile = new Intent(this, ProfileActivity.class);
+                intentProfile.putExtra(User.USERNAME, mUser.getUsername());
+                intentProfile.putExtra(User.EMAIL, mUser.getEmail());
+                intentProfile.putExtra(User.PHOTO_URL, mUser.getPhotoUrl());
+                if(UtilsCommon.hasMaterialDesign()){
+                    startActivityForResult(intentProfile, RC_PROFILE,
+                            ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                }else{
+                    startActivityForResult(intentProfile, RC_PROFILE);
+                }
                 break;
             case R.id.action_about:
-
+                openAbout();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            switch(requestCode){
+                case RC_PROFILE:
+                    if(data != null){
+                        mUser.setUsername(data.getStringExtra(User.USERNAME));
+                        mUser.setPhotoUrl(data.getStringExtra(User.PHOTO_URL));
+                        configToolbar();
+                    }
+                    break;
+            }
+        }
+    }
+
+    private void openAbout() {
+        LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.dialog_about, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.DialogFragmentTheme)
+                .setTitle(R.string.main_menu_about)
+                .setView(view)
+                .setPositiveButton(R.string.common_label_ok, null)
+                .setNeutralButton(R.string.about_privacy, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://policy.cursos-android-aga.com"));
+                        startActivity(intent);
+                    }
+                });
+        builder.show();
     }
 
     @Override
@@ -128,16 +192,21 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         mPresenter.onDestroy();
     }
 
-    private void clearNotifications(){
-        NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        if(notificationManager != null){
+    private void clearNotifications() {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (notificationManager != null) {
             notificationManager.cancelAll();
         }
     }
 
+    @OnClick(R.id.fab)
+    public void onAddClicked() {
+        new AddFragment().show(getSupportFragmentManager(), getString(R.string.addFriend_title));
+    }
+
     /*
-    *   MainView
-    * */
+     *   MainView
+     * */
 
     @Override
     public void friendAdded(User user) {
@@ -192,17 +261,37 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
     /*
-    *   OnItemClickListener
-    * */
+     *   OnItemClickListener
+     * */
 
     @Override
     public void onItemClick(User user) {
-
+        Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra(User.UID, user.getUid());
+        intent.putExtra(User.USERNAME, user.getUsername());
+        intent.putExtra(User.EMAIL, user.getEmail());
+        intent.putExtra(User.PHOTO_URL, user.getPhotoUrl());
+        if(UtilsCommon.hasMaterialDesign()){
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        }else{
+            startActivity(intent);
+        }
     }
 
     @Override
-    public void onItemLongClick(User user) {
-        mPresenter.removeFriend(user.getUid());
+    public void onItemLongClick(final User user) {
+        new AlertDialog.Builder(this, R.style.DialogFragmentTheme)
+                .setTitle(getString(R.string.main_dialog_message_confirmDelete))
+                .setMessage(String.format(Locale.ROOT, getString(R.string.main_dialog_message_confirmDelete),
+                        user.getUsernameValid()))
+                .setPositiveButton(R.string.main_dialog_accept, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mPresenter.removeFriend(user.getUid());
+                    }
+                })
+                .setNegativeButton(R.string.common_label_cancel, null)
+                .show();
     }
 
     @Override
@@ -214,4 +303,5 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     public void onDenyRequest(User user) {
         mPresenter.denyRequest(user);
     }
+
 }

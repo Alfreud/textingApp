@@ -2,9 +2,9 @@ package com.alfred0ga.texting.common.model.dataAccess;
 
 import com.alfred0ga.texting.common.pojo.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class FirebaseAuthenticationAPI {
-
     private FirebaseAuth mFirebaseAuth;
 
     private static class SingletonHolder{
@@ -32,6 +32,10 @@ public class FirebaseAuthenticationAPI {
             user.setUri(mFirebaseAuth.getCurrentUser().getPhotoUrl());
         }
         return user;
+    }
+
+    public FirebaseUser getCurrentUser() {
+        return mFirebaseAuth.getCurrentUser();
     }
 
 }

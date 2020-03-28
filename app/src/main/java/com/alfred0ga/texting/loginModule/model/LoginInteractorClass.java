@@ -41,7 +41,7 @@ public class LoginInteractorClass implements LoginInteractor {
             @Override
             public void onLaunchUILogin() {
                 post(LoginEvent.STATUS_AUTH_ERROR);
-                mDatabase.checkUserExist(mAuthentication.gatCurrenUser().getUid(), new EventErrorTypeListener() {
+                mDatabase.checkUserExist(mAuthentication.getCurrenUser().getUid(), new EventErrorTypeListener() {
                     @Override
                     public void onError(int typeEvent, int resMsg) {
                         if(typeEvent == LoginEvent.USER_NOT_EXIST){
@@ -56,7 +56,7 @@ public class LoginInteractorClass implements LoginInteractor {
     }
 
     private void registerUser() {
-        User currentUser = mAuthentication.gatCurrenUser();
+        User currentUser = mAuthentication.getCurrenUser();
         mDatabase.registerUser(currentUser);
     }
 

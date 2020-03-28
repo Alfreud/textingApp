@@ -40,7 +40,7 @@ public class Authentication {
         };
     }
 
-    public User gatCurrenUser(){
+    public User getCurrenUser(){
         return mAuthenticationAPI.getAuthUser();
     }
 }

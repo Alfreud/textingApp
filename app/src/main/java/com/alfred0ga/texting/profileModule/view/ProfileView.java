@@ -1,18 +1,20 @@
 package com.alfred0ga.texting.profileModule.view;
 
-public interface ProfoleView {
+import android.content.Intent;
+
+public interface ProfileView {
 
     void enableUIElements();
-    void desableUIElements();
+    void disableUIElements();
 
     void showProgress();
     void hideProgress();
     void showProgressImage();
     void hideProgressImage();
 
-    void showUserData(String username, String email, String photoUrl):
+    void showUserData(String username, String email, String photoUrl);
     void launchGallery();
-    void openDialogPreview();
+    void openDialogPreview(Intent data);
 
     void menuEditMode();
     void menuNormalMode();

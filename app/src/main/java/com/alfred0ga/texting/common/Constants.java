@@ -7,4 +7,6 @@ public class Constants {
 
     public static final long ONLINE_VALUE = -1;
 
+    public static final int RC_PHOTO_PICKER = 22;
+    public static final int RP_STORAGE = 122;
 }

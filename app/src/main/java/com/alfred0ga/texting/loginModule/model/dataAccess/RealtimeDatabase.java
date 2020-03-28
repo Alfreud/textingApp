@@ -39,6 +39,8 @@ public class RealtimeDatabase {
                         if(!dataSnapshot.exists()){
                             listener.onError(LoginEvent.USER_NOT_EXIST, R.string.login_error_user_exist);
                         }
+
+
                     }
 
                     @Override
