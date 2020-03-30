@@ -32,15 +32,11 @@ public class LoginInteractorClass implements LoginInteractor {
 
     @Override
     public void getStatusAuth() {
-        mAuthentication.getStatusAutn(new StatusAuthCallback() {
+        mAuthentication.getStatusAuth(new StatusAuthCallback() {
             @Override
             public void onGetUser(FirebaseUser user) {
                 post(LoginEvent.STATUS_AUTH_SUCCESS, user);
-            }
 
-            @Override
-            public void onLaunchUILogin() {
-                post(LoginEvent.STATUS_AUTH_ERROR);
                 mDatabase.checkUserExist(mAuthentication.getCurrenUser().getUid(), new EventErrorTypeListener() {
                     @Override
                     public void onError(int typeEvent, int resMsg) {
@@ -51,6 +47,10 @@ public class LoginInteractorClass implements LoginInteractor {
                         }
                     }
                 });
+            }
+            @Override
+            public void onLaunchUILogin() {
+                post(LoginEvent.STATUS_AUTH_ERROR);
             }
         });
     }

@@ -26,7 +26,7 @@ public class Authentication {
         }
     }
 
-    public void getStatusAutn(StatusAuthCallback callback){
+    public void getStatusAuth(StatusAuthCallback callback){
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
