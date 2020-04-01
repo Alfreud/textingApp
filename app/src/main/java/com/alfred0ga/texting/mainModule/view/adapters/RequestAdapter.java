@@ -67,7 +67,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
     }
 
     public void add(User user){
-        if(mUsers.contains(user)){
+        if(!mUsers.contains(user)){
             mUsers.add(user);
             notifyItemInserted(mUsers.size() - 1);
         }else{
@@ -111,7 +111,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
             btnAccept.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onAcceptRquest(user);
+                    listener.onAcceptRequest(user);
                 }
             });
 

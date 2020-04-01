@@ -7,7 +7,7 @@ public interface OnItemClickListener {
     void onItemClick(User user);
     void onItemLongClick(User user);
 
-    void onAcceptRquest(User user);
+    void onAcceptRequest(User user);
     void onDenyRequest(User user);
 
 }

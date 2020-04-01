@@ -41,7 +41,6 @@ public class FirebaseRealtimeDatabaseAPI {
 
     public DatabaseReference getUserReferenceByUid(String uid){
         return getRootReference().child(PATH_USERS).child(uid);
-        //return getRootReference().child(PATH_USERS);
     }
 
     public DatabaseReference getContactsReference(String uid) {
@@ -71,5 +70,4 @@ public class FirebaseRealtimeDatabaseAPI {
             getUserReferenceByUid(uid).child(User.LAST_CONNECTION_WITH).onDisconnect().cancel();
         }
     }
-
 }

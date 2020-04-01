@@ -124,10 +124,10 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 intentProfile.putExtra(User.USERNAME, mUser.getUsername());
                 intentProfile.putExtra(User.EMAIL, mUser.getEmail());
                 intentProfile.putExtra(User.PHOTO_URL, mUser.getPhotoUrl());
-                if(UtilsCommon.hasMaterialDesign()){
+                if (UtilsCommon.hasMaterialDesign()) {
                     startActivityForResult(intentProfile, RC_PROFILE,
                             ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-                }else{
+                } else {
                     startActivityForResult(intentProfile, RC_PROFILE);
                 }
                 break;
@@ -141,10 +141,10 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
-            switch(requestCode){
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
                 case RC_PROFILE:
-                    if(data != null){
+                    if (data != null) {
                         mUser.setUsername(data.getStringExtra(User.USERNAME));
                         mUser.setPhotoUrl(data.getStringExtra(User.PHOTO_URL));
                         configToolbar();
@@ -241,13 +241,13 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     @Override
     public void showRequestAccepted(String username) {
         Snackbar.make(contentMain, getString(R.string.main_message_request_accepted, username),
-                Snackbar.LENGTH_SHORT).show();
+                Snackbar.LENGTH_LONG).show();
     }
 
     @Override
     public void showRequestDenied() {
         Snackbar.make(contentMain, R.string.main_message_request_denied,
-                Snackbar.LENGTH_SHORT).show();
+                Snackbar.LENGTH_LONG).show();
     }
 
     @Override
@@ -271,9 +271,9 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         intent.putExtra(User.USERNAME, user.getUsername());
         intent.putExtra(User.EMAIL, user.getEmail());
         intent.putExtra(User.PHOTO_URL, user.getPhotoUrl());
-        if(UtilsCommon.hasMaterialDesign()){
+        if (UtilsCommon.hasMaterialDesign()) {
             startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-        }else{
+        } else {
             startActivity(intent);
         }
     }
@@ -295,7 +295,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
     @Override
-    public void onAcceptRquest(User user) {
+    public void onAcceptRequest(User user) {
         mPresenter.acceptRequest(user);
     }
 

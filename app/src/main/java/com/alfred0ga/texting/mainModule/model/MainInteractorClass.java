@@ -113,7 +113,7 @@ public class MainInteractorClass implements MainInteractor {
     }
 
     @Override
-    public void acceptRequest(User user) {
+    public void acceptRequest(final User user) {
         mDatabase.acceptRequest(user, getCurrentUser(), new BasicEventsCallback() {
             @Override
             public void onSuccess() {

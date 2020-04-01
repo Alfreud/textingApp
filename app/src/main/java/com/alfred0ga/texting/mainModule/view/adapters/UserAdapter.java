@@ -35,7 +35,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user,
+                parent, false);
         mContext = parent.getContext();
 
         return new ViewHolder(view);
@@ -75,7 +76,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     public void add(User user){
-        if(mUsers.contains(user)){
+        if(!mUsers.contains(user)){
             mUsers.add(user);
             notifyItemInserted(mUsers.size() - 1);
         }else{
@@ -99,7 +100,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         }
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.imgPhoto)
         CircleImageView imgPhoto;
         @BindView(R.id.tvName)
@@ -115,7 +116,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             this.view = itemView;
         }
 
-        private void setClickListener(User user, OnItemClickListener listener){
+        private void setClickListener(final User user, final OnItemClickListener listener){
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
