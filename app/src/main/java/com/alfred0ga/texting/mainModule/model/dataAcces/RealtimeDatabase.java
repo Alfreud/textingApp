@@ -72,6 +72,7 @@ public class RealtimeDatabase {
                             break;
                         default:
                             listener.onError(R.string.common_error_server);
+                            break;
                     }
                 }
             };
@@ -165,8 +166,8 @@ public class RealtimeDatabase {
         Map<String, Object> acceptRequest = new HashMap<>();
         acceptRequest.put(FirebaseRealtimeDatabaseAPI.PATH_USERS + "/" + user.getUid() + "/" +
                 FirebaseRealtimeDatabaseAPI.PATH_CONTACTS + "/" + myUser.getUid(), myUserMap);
-        acceptRequest.put(FirebaseRealtimeDatabaseAPI.PATH_USERS + "/" + user.getUid() + "/" +
-                FirebaseRealtimeDatabaseAPI.PATH_CONTACTS + "/" + myUser.getUid(), userRequestMap);
+        acceptRequest.put(FirebaseRealtimeDatabaseAPI.PATH_USERS + "/" + myUser.getUid() + "/" +
+                FirebaseRealtimeDatabaseAPI.PATH_CONTACTS + "/" + user.getUid(), userRequestMap);
         acceptRequest.put(FirebaseRealtimeDatabaseAPI.PATH_REQUESTS + "/" + emailEncoded + "/" +
                 user.getUid(), null);
 
