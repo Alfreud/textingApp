@@ -8,7 +8,6 @@ import com.alfred0ga.texting.common.model.dataAccess.FirebaseAuthenticationAPI;
 import org.greenrobot.eventbus.EventBus;
 
 public class AddInteractorClass implements AddInteractor {
-
     private RealtimeDatabase mDatabase;
     private FirebaseAuthenticationAPI mAuthenticationAPI;
 

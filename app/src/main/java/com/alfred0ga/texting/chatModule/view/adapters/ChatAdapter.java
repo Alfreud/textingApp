@@ -147,7 +147,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     }
 
     public void add(Message msg) {
-        if(mMessages.contains(msg)){
+        if(!mMessages.contains(msg)){
             mMessages.add(msg);
             notifyItemInserted(mMessages.size() - 1);
         }

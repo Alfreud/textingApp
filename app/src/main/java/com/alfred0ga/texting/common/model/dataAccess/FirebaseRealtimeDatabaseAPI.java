@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirebaseRealtimeDatabaseAPI {
-
     public static final String SEPARATOR = "___&___";
     public static final String PATH_USERS = "users";
     public static final String PATH_CONTACTS = "contacts";
@@ -30,7 +29,6 @@ public class FirebaseRealtimeDatabaseAPI {
     private FirebaseRealtimeDatabaseAPI(){
         this.mDatabaseReference = FirebaseDatabase.getInstance().getReference();
     }
-
 
     /*
     *  References

@@ -10,7 +10,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 public class MainPresenterClass implements MainPresenter {
-
     private MainView mView;
     private MainInteractor mInteractor;
 

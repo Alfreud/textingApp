@@ -23,7 +23,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity implements LoginView{
-
     public static final int RC_SIGN_IN = 21;
     @BindView(R.id.tvMessage)
     TextView tvMessage;

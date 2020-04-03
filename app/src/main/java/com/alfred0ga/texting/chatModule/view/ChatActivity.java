@@ -194,7 +194,6 @@ public class ChatActivity extends AppCompatActivity implements OnItemClickListen
                 case Constants.RP_STORAGE:
                     fromGallery();
                     break;
-
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -318,9 +317,11 @@ public class ChatActivity extends AppCompatActivity implements OnItemClickListen
 
     @OnClick(R.id.btnSendMessage)
     public void sendMessage() {
-        if (UtilsCommon.validateMessage(etMessage))
+        if (UtilsCommon.validateMessage(etMessage)){
             mPresenter.sendMessage(etMessage.getText().toString().trim());
-        etMessage.setText("");
+            etMessage.setText("");
+        }
+
     }
 
     @OnClick(R.id.btnGallery)

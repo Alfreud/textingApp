@@ -8,7 +8,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Authentication {
-
     private FirebaseAuthenticationAPI mAuthenticationAPI;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 

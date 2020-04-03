@@ -3,7 +3,6 @@ package com.alfred0ga.texting.mainModule.events;
 import com.alfred0ga.texting.common.pojo.User;
 
 public class MainEvent {
-
     public static final int USER_ADDED = 0;
     public static final int USER_UPDATED = 1;
     public static final int USER_REMOVED = 2;

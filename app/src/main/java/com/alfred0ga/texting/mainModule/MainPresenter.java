@@ -4,7 +4,6 @@ import com.alfred0ga.texting.common.pojo.User;
 import com.alfred0ga.texting.mainModule.events.MainEvent;
 
 public interface MainPresenter {
-
     void onCreate();
     void onDestroy();
     void inPause();
@@ -18,5 +17,4 @@ public interface MainPresenter {
     void denyRequest(User user);
 
     void onEventListener(MainEvent evet);
-
 }

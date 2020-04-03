@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RealtimeDatabase {
-
     private FirebaseRealtimeDatabaseAPI mDatabaseAPI;
 
     private ChildEventListener mUserEventListener;
@@ -30,7 +29,6 @@ public class RealtimeDatabase {
     /*
     *   references
     * */
-
     public FirebaseRealtimeDatabaseAPI getmDatabaseAPI() {
         return mDatabaseAPI;
     }
@@ -42,7 +40,6 @@ public class RealtimeDatabase {
     /*
      *   public methods
      * */
-
     public void subscribeToUserList(String myUid, final UserEventListener listener){
         if(mUserEventListener == null){
             mUserEventListener = new ChildEventListener() {
@@ -78,7 +75,6 @@ public class RealtimeDatabase {
             };
         }
         mDatabaseAPI.getContactsReference(myUid).addChildEventListener(mUserEventListener);
-
     }
 
     private User getUser(DataSnapshot dataSnapshot) {
@@ -196,7 +192,5 @@ public class RealtimeDatabase {
                         }
                     }
                 });
-
     }
-
 }

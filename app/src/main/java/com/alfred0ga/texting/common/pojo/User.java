@@ -5,7 +5,6 @@ import android.net.Uri;
 import com.google.firebase.database.Exclude;
 
 public class User {
-
     public static final String USERNAME = "username";
     public static final String PHOTO_URL = "photoUrl";
     public static final String EMAIL = "email";

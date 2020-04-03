@@ -7,7 +7,6 @@ import android.net.Uri;
 import com.alfred0ga.texting.profileModule.events.ProfileEvent;
 
 public interface ProfilePresenter {
-
     void onCreate();
     void onDestroy();
 
@@ -20,5 +19,4 @@ public interface ProfilePresenter {
     void result(int requestCode, int resultCode, Intent data);
 
     void onEventListener(ProfileEvent event);
-
 }

@@ -98,10 +98,8 @@ public class ProfilePresenterClass implements ProfilePresenter {
                     mView.onError(event.getResMsg());
                     break;
                 case ProfileEvent.ERROR_PROFILE:
-
                     break;
                 case ProfileEvent.ERROR_SERVER:
-
                     break;
                 case ProfileEvent.ERROR_IMAGE:
                     mView.enableUIElements();

@@ -3,7 +3,6 @@ package com.alfred0ga.texting.mainModule.view;
 import com.alfred0ga.texting.common.pojo.User;
 
 public interface MainView {
-
     void friendAdded(User user);
     void friendUpdated(User user);
     void friendRemoved(User user);
@@ -18,5 +17,4 @@ public interface MainView {
     void showFriendRemoved();
 
     void showError(int resMsg);
-
 }

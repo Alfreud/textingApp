@@ -3,7 +3,6 @@ package com.alfred0ga.texting.loginModule.events;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginEvent {
-
     public static final int STATUS_AUTH_SUCCESS = 0;
     public static final int ERROR_SERVER = 100;
     public static final int STATUS_AUTH_ERROR = 101;

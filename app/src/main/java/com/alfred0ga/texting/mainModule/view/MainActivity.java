@@ -45,7 +45,6 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener, MainView {
-
     private static final int RC_PROFILE = 23;
 
     @BindView(R.id.imgProfile)
@@ -207,7 +206,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     /*
      *   MainView
      * */
-
     @Override
     public void friendAdded(User user) {
         mUserAdapter.add(user);
@@ -263,7 +261,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     /*
      *   OnItemClickListener
      * */
-
     @Override
     public void onItemClick(User user) {
         Intent intent = new Intent(this, ChatActivity.class);
@@ -303,5 +300,4 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     public void onDenyRequest(User user) {
         mPresenter.denyRequest(user);
     }
-
 }

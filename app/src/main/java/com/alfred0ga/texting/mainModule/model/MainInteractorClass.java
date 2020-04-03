@@ -13,7 +13,6 @@ import com.alfred0ga.texting.mainModule.model.dataAcces.UserEventListener;
 import org.greenrobot.eventbus.EventBus;
 
 public class MainInteractorClass implements MainInteractor {
-
     private RealtimeDatabase mDatabase;
     private Authentication mAuthentication;
 
@@ -23,7 +22,6 @@ public class MainInteractorClass implements MainInteractor {
         mDatabase = new RealtimeDatabase();
         mAuthentication = new Authentication();
     }
-
 
     @Override
     public void suscribeToUserList() {
@@ -72,7 +70,6 @@ public class MainInteractorClass implements MainInteractor {
         });
 
         changeConnectionStatus(Constants.ONLINE);
-
     }
 
     private void changeConnectionStatus(boolean online) {

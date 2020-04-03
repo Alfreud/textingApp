@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RealtimeDatabase {
-
     private FirebaseRealtimeDatabaseAPI mDatabaseAPI;
 
     public RealtimeDatabase() {

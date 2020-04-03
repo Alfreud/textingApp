@@ -45,7 +45,6 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity implements ProfileView {
-
     public static final int RC_PHOTO_PICKER = 22;
     @BindView(R.id.imgProfile)
     CircleImageView imgProfile;
@@ -162,7 +161,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
     /*
      *   ProfileView
      * */
-
     @Override
     public void enableUIElements() {
         setInputs(true);
@@ -295,5 +293,4 @@ public class ProfileActivity extends AppCompatActivity implements ProfileView {
         etUsername.requestFocus();
         etUsername.setError(getString(resMsg));
     }
-
 }

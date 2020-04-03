@@ -25,7 +25,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class ImageZoomFragment extends DialogFragment implements DialogInterface.OnShowListener {
-
     @BindView(R.id.pvZoom)
     PhotoView pvZoom;
     @BindView(R.id.contentMain)

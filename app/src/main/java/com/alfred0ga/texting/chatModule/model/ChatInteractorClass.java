@@ -113,10 +113,10 @@ public class ChatInteractorClass implements ChatInteractor {
                 new SendMessageListener() {
                     @Override
                     public void onSeccess() {
-                        if(mUidConnectedFriend.equals(getCurrentUser().getUid())){
+                        if(!mUidConnectedFriend.equals(getCurrentUser().getUid())){
                             mDatabase.sumUnreadMessages(getCurrentUser().getUid(), mFriendUid);
 
-                            // TODO notify
+                            // TODO: 2/04/20 notify
                         }
                     }
                 });

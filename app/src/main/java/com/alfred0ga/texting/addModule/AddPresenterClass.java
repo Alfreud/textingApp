@@ -9,7 +9,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 public class AddPresenterClass implements AddPresenter {
-
     private AddView mView;
     private AddInteractor mInteractor;
 

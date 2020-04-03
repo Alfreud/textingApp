@@ -5,7 +5,6 @@ import android.content.Intent;
 import com.alfred0ga.texting.loginModule.events.LoginEvent;
 
 public interface LoginPresenter {
-
     void onCreate();
     void onResume();
     void onPause();
@@ -16,5 +15,4 @@ public interface LoginPresenter {
     void getStatusAuth();
 
     void onEventListener(LoginEvent event);
-
 }

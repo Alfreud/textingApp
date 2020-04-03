@@ -14,7 +14,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 public class LoginPresenterClass implements LoginPresenter {
-
     private LoginView mView;
     private LoginInteractor mInteractor;
 

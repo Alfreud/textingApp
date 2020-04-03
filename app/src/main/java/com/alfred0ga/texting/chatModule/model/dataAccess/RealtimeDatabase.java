@@ -168,15 +168,13 @@ public class RealtimeDatabase {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
     }
 
-    private DatabaseReference getOneContactReference(String uidMain, String uiChild) {
+    private DatabaseReference getOneContactReference(String uidMain, String uidChild) {
         return mDatabaseAPI.getUserReferenceByUid(uidMain).child(FirebaseRealtimeDatabaseAPI.PATH_CONTACTS)
-                .child(uiChild);
+                .child(uidChild);
     }
 
     public void sumUnreadMessages(String myUid, String friendUid){

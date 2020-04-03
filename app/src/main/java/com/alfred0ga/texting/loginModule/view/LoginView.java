@@ -3,7 +3,6 @@ package com.alfred0ga.texting.loginModule.view;
 import android.content.Intent;
 
 public interface LoginView {
-
     void showProgress();
     void hideProgress();
 
@@ -13,5 +12,4 @@ public interface LoginView {
     void showLoginSuccessdully(Intent data);
     void showMessageStarting();
     void showError(int resMsg);
-
 }

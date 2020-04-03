@@ -3,7 +3,6 @@ package com.alfred0ga.texting.mainModule.model;
 import com.alfred0ga.texting.common.pojo.User;
 
 public interface MainInteractor {
-
     void suscribeToUserList();
     void unsuscribeToUserList();
 
@@ -14,5 +13,4 @@ public interface MainInteractor {
 
     void acceptRequest(User user);
     void denyRequest(User user);
-
 }

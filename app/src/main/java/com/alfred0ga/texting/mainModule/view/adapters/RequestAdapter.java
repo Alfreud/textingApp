@@ -23,7 +23,6 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHolder> {
-
     private List<User> mUsers;
     private Context mContext;
     private OnItemClickListener mListener;
@@ -122,7 +121,5 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                 }
             });
         }
-
     }
-
 }

@@ -3,7 +3,6 @@ package com.alfred0ga.texting.profileModule.view;
 import android.content.Intent;
 
 public interface ProfileView {
-
     void enableUIElements();
     void disableUIElements();
 
@@ -25,5 +24,4 @@ public interface ProfileView {
 
     void onErrorUpload(int resMsg);
     void onError(int resMsg);
-
 }

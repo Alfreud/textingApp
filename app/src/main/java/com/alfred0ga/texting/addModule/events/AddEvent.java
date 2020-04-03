@@ -1,7 +1,6 @@
 package com.alfred0ga.texting.addModule.events;
 
 public class AddEvent {
-
     public static final int SEND_REQUEST_SUCCESS = 0;
     public static final int ERROR_SERVER = 100;
 

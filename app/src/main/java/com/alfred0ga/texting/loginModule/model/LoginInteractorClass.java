@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseUser;
 import org.greenrobot.eventbus.EventBus;
 
 public class LoginInteractorClass implements LoginInteractor {
-
     private Authentication mAuthentication;
     private RealtimeDatabase mDatabase;
 

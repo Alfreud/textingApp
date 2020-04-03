@@ -33,7 +33,6 @@ import butterknife.Unbinder;
  * A simple {@link Fragment} subclass.
  */
 public class AddFragment extends DialogFragment implements DialogInterface.OnShowListener, AddView {
-
     @BindView(R.id.etEmail)
     TextInputEditText etEmail;
     @BindView(R.id.progressBar)
