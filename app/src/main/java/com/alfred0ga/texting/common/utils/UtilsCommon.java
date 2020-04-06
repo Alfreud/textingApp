@@ -24,6 +24,13 @@ public class UtilsCommon {
         return preKey.replace(".", "_");
     }
 
+    public static String getEmailToTopic(String email){
+        String topic = getEmailEncoded(email);
+        topic = topic.replace("@", "_64");
+
+        return topic;
+    }
+
     /*
     *   Cargar Imagenes Básicas
     * */

@@ -140,4 +140,10 @@ public class AddFragment extends DialogFragment implements DialogInterface.OnSho
         etEmail.setError(getString(R.string.addFriend_error_message));
         etEmail.requestFocus();
     }
+
+    @Override
+    public void showMessageExist(int resMsg) {
+        etEmail.setError(getString(resMsg));
+        etEmail.requestFocus();
+    }
 }

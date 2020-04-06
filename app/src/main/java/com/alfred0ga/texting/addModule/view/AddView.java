@@ -8,4 +8,5 @@ public interface AddView {
 
     void friendAdded();
     void friendNotAdded();
+    void showMessageExist(int resMsg);
 }

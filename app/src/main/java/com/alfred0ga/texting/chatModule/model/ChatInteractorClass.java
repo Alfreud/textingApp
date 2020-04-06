@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.net.Uri;
 
 import com.alfred0ga.texting.chatModule.events.ChatEvent;
+import com.alfred0ga.texting.chatModule.model.dataAccess.NotificationRS;
 import com.alfred0ga.texting.chatModule.model.dataAccess.RealtimeDatabase;
 import com.alfred0ga.texting.chatModule.model.dataAccess.Storage;
 import com.alfred0ga.texting.common.Constants;
+import com.alfred0ga.texting.common.model.EventErrorTypeListener;
 import com.alfred0ga.texting.common.model.StorageUploadImageCallback;
 import com.alfred0ga.texting.common.model.dataAccess.FirebaseAuthenticationAPI;
 import com.alfred0ga.texting.common.pojo.Message;
@@ -18,6 +20,8 @@ public class ChatInteractorClass implements ChatInteractor {
     private RealtimeDatabase mDatabase;
     private FirebaseAuthenticationAPI mAuthenticationAPI;
     private Storage mStorage;
+    // Notify
+    private NotificationRS mNotification;
 
     private User mMyUser;
     private String mFriendUid;
@@ -30,6 +34,7 @@ public class ChatInteractorClass implements ChatInteractor {
         this.mDatabase = new RealtimeDatabase();
         this.mAuthenticationAPI = FirebaseAuthenticationAPI.getInstance();
         this.mStorage = new Storage();
+        this.mNotification = new NotificationRS();
     }
 
     private User getCurrentUser(){
@@ -117,6 +122,16 @@ public class ChatInteractorClass implements ChatInteractor {
                             mDatabase.sumUnreadMessages(getCurrentUser().getUid(), mFriendUid);
 
                             // TODO: 2/04/20 notify
+                            if(mLastConnectioFriend != Constants.ONLINE_VALUE){
+                                mNotification.sendNotification(getCurrentUser().getUsername(), msg,
+                                        mFriendEmail, getCurrentUser().getUid(), getCurrentUser().getEmail(),
+                                        getCurrentUser().getUri(), new EventErrorTypeListener() {
+                                            @Override
+                                            public void onError(int typeEvent, int resMsg) {
+                                                post(typeEvent, resMsg);
+                                            }
+                                        });
+                            }
                         }
                     }
                 });

@@ -77,4 +77,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_chat">Chat</string>
     <string name="chat_status_last_connection">Última conexión: %s</string>
+    <string name="common_error_process_data">Error intermo, disculpe las molestias.</string>
+    <string name="common_error_volley">Error de comunicación con el servidor, intente más tarde. Error interno, disculpe las molestias</string>
+    <string name="chat_error_method_not_exist">Imposible notificar al usuario, contacte a su administrador</string>
+    <string name="main_tuto_message">Aqui puedes agregar a tus amigos, usa su email.\nSolo faltará que acepten tu solicitúd de amistad.</string>
+    <string name="main_tuto_ok">Entendido.</string>
+    <string name="main_tuto_fabAdd">mainFabAdd03</string>
+    <string name="addFriend_error_user_exist">No hay ningún usuario con este email.</string>
+    <string name="addFriend_message_request_exist">Lo siento, tu solicitud ya habia sido enviada.</string>
 </resources>

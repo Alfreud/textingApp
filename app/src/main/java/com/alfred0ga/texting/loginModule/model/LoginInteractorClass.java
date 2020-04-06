@@ -1,6 +1,7 @@
 package com.alfred0ga.texting.loginModule.model;
 
 import com.alfred0ga.texting.common.model.EventErrorTypeListener;
+import com.alfred0ga.texting.common.model.dataAccess.FirebaseCloudMessagingAPI;
 import com.alfred0ga.texting.common.pojo.User;
 import com.alfred0ga.texting.loginModule.events.LoginEvent;
 import com.alfred0ga.texting.loginModule.model.dataAccess.Authentication;
@@ -13,10 +14,14 @@ import org.greenrobot.eventbus.EventBus;
 public class LoginInteractorClass implements LoginInteractor {
     private Authentication mAuthentication;
     private RealtimeDatabase mDatabase;
+    // Notify
+    private FirebaseCloudMessagingAPI mCloudMessagingAPI;
 
     public LoginInteractorClass() {
         mAuthentication = new Authentication();
         mDatabase = new RealtimeDatabase();
+        // Notify
+        mCloudMessagingAPI = FirebaseCloudMessagingAPI.getInstance();
     }
 
     @Override
@@ -46,6 +51,8 @@ public class LoginInteractorClass implements LoginInteractor {
                         }
                     }
                 });
+
+                mCloudMessagingAPI.subscribeToMyTopic(user.getEmail());
             }
             @Override
             public void onLaunchUILogin() {

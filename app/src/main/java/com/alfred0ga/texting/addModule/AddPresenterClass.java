@@ -52,6 +52,9 @@ public class AddPresenterClass implements AddPresenter {
                 case AddEvent.ERROR_SERVER:
                     mView.friendNotAdded();
                     break;
+                case AddEvent.ERROR_EXIST:
+                    mView.showMessageExist(event.getResMsg());
+                    break;
             }
         }
     }

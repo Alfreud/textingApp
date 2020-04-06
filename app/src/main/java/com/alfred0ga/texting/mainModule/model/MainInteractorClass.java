@@ -4,6 +4,7 @@ import android.provider.SyncStateContract;
 
 import com.alfred0ga.texting.common.Constants;
 import com.alfred0ga.texting.common.model.BasicEventsCallback;
+import com.alfred0ga.texting.common.model.dataAccess.FirebaseCloudMessagingAPI;
 import com.alfred0ga.texting.common.pojo.User;
 import com.alfred0ga.texting.mainModule.events.MainEvent;
 import com.alfred0ga.texting.mainModule.model.dataAcces.Authentication;
@@ -15,12 +16,16 @@ import org.greenrobot.eventbus.EventBus;
 public class MainInteractorClass implements MainInteractor {
     private RealtimeDatabase mDatabase;
     private Authentication mAuthentication;
+    // Notify
+    private FirebaseCloudMessagingAPI mCloudMessagingAPI;
 
     private User mMyUser = null;
 
     public MainInteractorClass(){
         mDatabase = new RealtimeDatabase();
         mAuthentication = new Authentication();
+        // Notify
+        mCloudMessagingAPI = FirebaseCloudMessagingAPI.getInstance();
     }
 
     @Override
@@ -86,6 +91,8 @@ public class MainInteractorClass implements MainInteractor {
 
     @Override
     public void signOff() {
+        mCloudMessagingAPI.unsubscribeToMyTopic(getCurrentUser().getEmail());
+
         mAuthentication.signOff();
     }
 

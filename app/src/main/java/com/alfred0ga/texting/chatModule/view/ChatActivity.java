@@ -39,6 +39,7 @@ import com.alfred0ga.texting.common.pojo.Message;
 import com.alfred0ga.texting.common.pojo.User;
 import com.alfred0ga.texting.common.utils.UtilsCommon;
 import com.alfred0ga.texting.common.utils.UtilsImage;
+import com.alfred0ga.texting.common.utils.UtilsNetwork;
 import com.alfred0ga.texting.mainModule.view.MainActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -47,6 +48,7 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -146,7 +148,13 @@ public class ChatActivity extends AppCompatActivity implements OnItemClickListen
     @Override
     protected void onResume() {
         super.onResume();
-        mPresenter.onResume();
+        if(UtilsNetwork.isOnline(this)){
+            mPresenter.onResume();
+        }else{
+            UtilsCommon.showSnackBar(contentMain, R.string.common_message_noInternet,
+                    Snackbar.LENGTH_LONG);
+        }
+
     }
 
     @Override
