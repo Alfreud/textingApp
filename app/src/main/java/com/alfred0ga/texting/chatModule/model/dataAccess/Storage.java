@@ -6,7 +6,6 @@ import android.net.Uri;
 import com.alfred0ga.texting.R;
 import com.alfred0ga.texting.common.model.StorageUploadImageCallback;
 import com.alfred0ga.texting.common.model.dataAccess.FirebaseStorageAPI;
-import com.alfred0ga.texting.common.utils.UtilsImage;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;

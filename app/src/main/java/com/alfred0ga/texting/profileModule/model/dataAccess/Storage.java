@@ -1,6 +1,5 @@
 package com.alfred0ga.texting.profileModule.model.dataAccess;
 
-import android.app.Activity;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;

@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alfred0ga.texting.R;
 import com.alfred0ga.texting.addModule.view.AddFragment;
 import com.alfred0ga.texting.chatModule.view.ChatActivity;
+import com.alfred0ga.texting.common.Constants;
 import com.alfred0ga.texting.common.pojo.User;
 import com.alfred0ga.texting.common.utils.UtilsCommon;
 import com.alfred0ga.texting.loginModule.view.LoginActivity;
@@ -37,6 +38,7 @@ import com.alfred0ga.texting.mainModule.view.adapters.UserAdapter;
 import com.alfred0ga.texting.profileModule.view.ProfileActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -70,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
 
     private User mUser;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         mPresenter = new MainPresenterClass(this);
         mPresenter.onCreate();
         mUser = mPresenter.getCurrentUser();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         configToolbar();
         configAdapter();
@@ -270,6 +276,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     public void showRequestDenied() {
         Snackbar.make(contentMain, R.string.main_message_request_denied,
                 Snackbar.LENGTH_LONG).show();
+        mFirebaseAnalytics.logEvent(Constants.EVENT_REQUEST_DENIED, null);
     }
 
     @Override

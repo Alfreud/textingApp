@@ -11,11 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alfred0ga.texting.R;
+import com.alfred0ga.texting.common.Constants;
 import com.alfred0ga.texting.loginModule.LoginPresenter;
 import com.alfred0ga.texting.loginModule.LoginPresenterClass;
 import com.alfred0ga.texting.mainModule.view.MainActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.Arrays;
 
@@ -31,11 +33,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     private LoginPresenter mPresenter;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         mPresenter = new LoginPresenterClass(this);
         mPresenter.onCreate();
@@ -109,8 +115,17 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     public void showLoginSuccessdully(Intent data) {
         IdpResponse response = IdpResponse.fromResultIntent(data);
         String email = "";
+        String dominio;
         if(response != null){
             email = response.getEmail();
+
+            if (email != null && email.contains("@")){
+                dominio = email.substring(email.indexOf("@") + 1);
+                mFirebaseAnalytics.setUserProperty(Constants.USER_PROPERTY_EMAIL_PROVIDER, dominio);
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, null);
+                //email_provider
+
+            }
         }
         Toast.makeText(this, getString(R.string.login_message_success, email),
                 Toast.LENGTH_SHORT).show();

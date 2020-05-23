@@ -3,9 +3,7 @@ package com.alfred0ga.texting.addModule.view;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
@@ -20,10 +18,10 @@ import androidx.fragment.app.Fragment;
 import com.alfred0ga.texting.R;
 import com.alfred0ga.texting.addModule.AddPresenter;
 import com.alfred0ga.texting.addModule.AddPresenterClass;
+import com.alfred0ga.texting.common.Constants;
 import com.alfred0ga.texting.common.utils.UtilsCommon;
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.zip.Inflater;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,6 +44,8 @@ public class AddFragment extends DialogFragment implements DialogInterface.OnSho
 
     Unbinder unbinder;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     public AddFragment() {
         // Required empty public constructor
         mPresenter = new AddPresenterClass(this);
@@ -65,6 +65,9 @@ public class AddFragment extends DialogFragment implements DialogInterface.OnSho
 
         AlertDialog dialog = builder.create();
         dialog.setOnShowListener(this);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity());
+
         return dialog;
     }
 
@@ -132,6 +135,10 @@ public class AddFragment extends DialogFragment implements DialogInterface.OnSho
     public void friendAdded() {
         Toast.makeText(getActivity(), R.string.addFriend_message_request_dispatched, Toast.LENGTH_SHORT)
                 .show();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.PARAM_CONTEXT, AddFragment.class.getName());
+        mFirebaseAnalytics.logEvent(Constants.EVENT_ADD_FRIEND, bundle);
+
         dismiss();
     }
 

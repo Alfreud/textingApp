@@ -18,4 +18,12 @@ public class Constants {
     public static final String TOPIC = "topic";
 
     public static final String SUCCESS = "success";
+
+    /*
+    *   Analytics
+    * */
+    public static final String PARAM_CONTEXT = "param_context";
+    public static final String EVENT_ADD_FRIEND = "event_add_friend";
+    public static final String EVENT_REQUEST_DENIED = "event_request_denied";
+    public static final String USER_PROPERTY_EMAIL_PROVIDER = "email_provider";
 }

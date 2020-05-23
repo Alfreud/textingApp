@@ -2,10 +2,7 @@ package com.alfred0ga.texting.common.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
-
-import com.alfred0ga.texting.chatModule.view.ChatActivity;
 
 public class UtilsNetwork {
 

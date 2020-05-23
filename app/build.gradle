@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+   apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
@@ -31,9 +31,9 @@ android {
 
 def circleImageViewVersion = '2.2.0'
 def materialShowcaseView = '1.2.0'
-def butterknifeVersion = '10.0.0'
+def butterknifeVersion = '10.2.1'
 def eventbusVersion = '3.1.1'
-def glideVersion = '4.8.0'
+def glideVersion = '4.11.0'
 def gsonVersion = '2.8.5'
 def photoView = '2.1.4'
 def volley = '1.1.1'

@@ -1,6 +1,5 @@
 package com.alfred0ga.texting.profileModule;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 

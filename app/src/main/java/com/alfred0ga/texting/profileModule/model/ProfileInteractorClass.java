@@ -1,6 +1,5 @@
 package com.alfred0ga.texting.profileModule.model;
 
-import android.app.Activity;
 import android.net.Uri;
 
 import com.alfred0ga.texting.common.model.EventErrorTypeListener;
